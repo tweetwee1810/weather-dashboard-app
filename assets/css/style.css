@@ -1,0 +1,31 @@
+body{
+    background: #afaffc;
+  margin-top:20px;
+}
+
+
+.current-city {
+    font-family: 'Lucida Console', monospace;
+    display: flex;
+    justify-content: flex-end;
+    width: 1000px;
+    justify-content: flex-end;
+    background-color: rgb(158, 236, 158);
+    margin:2%;
+    padding:2%;
+    flex-direction: column;
+    border: solid;
+}
+.five-days-forecast{
+    font-family: 'Lucida Console', monospace;
+    display: flex;
+    justify-content: flex-end;
+    width: 1000px;
+    justify-content: flex-end;
+    background-color: rgb(158, 236, 158);
+    margin:2%;
+    padding:2%;
+    flex-direction: column;
+    border: solid;
+}
+
