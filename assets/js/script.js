@@ -11,14 +11,16 @@ var humid = document.querySelector("#humid");
 var windy = document.querySelector("#wind");
 var currentWeather = document.querySelector(".current-city");
 var dateDisplay = dayjs().format("MM/DD/YY");
+var recentSearch = document.querySelector("#recent-search")
 var previousSearch = [];
 
+
 //function to save the history search
-function saveHistory(searchInput) {
-    previousSearch.push(searchInput)
+function saveHistory(city) {
+    previousSearch.push(city)
     localStorage.setItem('previousSearch', JSON.stringify(previousSearch))
 }
-// //function to display history search
+//function to display history search
 // function displayHistory (){
 //     JSON.parse(localStorage.getItem('previousSearch', previousSearch));
 //function for call api
@@ -92,6 +94,6 @@ searchBtn.addEventListener('click', function (event) {
     getWeatherData(city);
     saveHistory();
 })
-// //call function to display
+//call function to display
 // displayHistory()
 
