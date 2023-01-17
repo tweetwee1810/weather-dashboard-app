@@ -32,3 +32,47 @@ body{
     width: 30px;
     height: 30px;
  }
+#recent-btn {
+    font-family: cursive;
+    font-style: oblique;
+    display: flex;
+    flex-wrap: wrap;
+    height: 38px;
+    padding: 0 30px;
+    color: #555;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    /* border-radius: 12px; */
+    /* border: 1px solid #bbb; */
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.history-btn {
+    width: 100%;
+    margin: 0.5rem;
+}
+#clear-btn {
+   font-family: cursive;
+   background-color: transparent;
+   cursor: pointer;
+   border-radius: 12px;
+}
+/* .modal {
+    display: flex;
+    align-items: center;
+}
+.modal::before {
+    content: " ";
+    background-color: gray;
+    background-size: cover;
+    position: absolute;
+    opacity: 0.5;
+} */

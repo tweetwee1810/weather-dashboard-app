@@ -11,29 +11,62 @@ var humid = document.querySelector("#humid");
 var windy = document.querySelector("#wind");
 var currentWeather = document.querySelector(".current-city");
 var dateDisplay = dayjs().format("MM/DD/YY");
-var recentSearch = document.querySelector("#recent-search")
-var previousSearch = [];
+var recentSearch = document.querySelector("#recent-search");
+var previousSearch =JSON.parse(localStorage.getItem('previousSearch')) || []; ;
+var recentBtn = document.querySelector("#recent-btn");
 
 
 //function to save the history search
 function saveHistory(city) {
-    previousSearch.push(city)
+    //pulling previous searched cities from local storage
+    // previousSearch = JSON.parse(localStorage.getItem('previousSearch')) || [];
+    // adding new  city
+    console.log(previousSearch.includes(city))
+    if (!previousSearch.includes(city)) {
+        
+        previousSearch.push(city)
+    }
+    
+    console.log(previousSearch)
     localStorage.setItem('previousSearch', JSON.stringify(previousSearch))
+    displayHistory()
+
 }
-//function to display history search
+// function to display history search
 // function displayHistory (){
 //     JSON.parse(localStorage.getItem('previousSearch', previousSearch));
+
+function displayHistory(){
+    // console.log("Calling display history func");
+    document.getElementById("recent-btn").innerHTML = "";
+  for (let index = 0; index <previousSearch.length; index++) {
+         var newCities = document.createElement("button")  
+         newCities.className = "history-btn"  
+         newCities.textContent = previousSearch[index]
+         newCities.setAttribute('type','button')
+         recentBtn.appendChild(newCities)
+         newCities.addEventListener("click", getPreviousCitiesWeather)
+        
+  }
+}
+function getPreviousCitiesWeather(event){
+    console.log(event)
+let city = event.target.textContent
+getWeatherData(city)
+}
+
 //function for call api
 function getWeatherData(city) {
     fetch(baseURL + city + '&units=imperial&appid=' + APIkey)
         .then(function (response) {
             return response.json();
         })
+
         .then(function (data) {
-            // console.log(data)
+             console.log(data)
             weatherLocation.innerHTML = data.name;
             document.querySelector('#current-location').innerHTML = dateDisplay;
-            weatherIcon.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
+            weatherIcon.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon +'@2x.png';
             tempt.innerHTML = 'Temp: ' + data.main.temp + "°F";
             humid.innerHTML = 'Humidity: ' + data.main.humidity + "%";
             windy.innerHTML = 'Wind: ' + data.wind.speed + "MPH";
@@ -85,15 +118,33 @@ function getWeatherData(city) {
             document.querySelector("#wind-5").innerHTML = "Wind: " + data.list[28].wind.speed + "MPH";
                 })
         })
+
+
 }
+//clear button function
+$("#clear-btn").on("click", function () {
+	// console.log(onclick);
+	localStorage.clear();
+	$("#recent-btn").empty();
+});
+
+//hide the weather container before clicking to the search button
+$('.weather').hide();
+
+
 // getWeatherData("tacoma");
 //button 
 searchBtn.addEventListener('click', function (event) {
     event.preventDefault();
     city = search.value;
     getWeatherData(city);
-    saveHistory();
+    saveHistory(city);
+    // displayHistory()
+    $('.weather').show();
 })
+
+displayHistory()
+getWeatherData()
 //call function to display
 // displayHistory()
 
