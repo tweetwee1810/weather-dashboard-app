@@ -1,6 +1,7 @@
 # weather-dashboard-app
 
 ## Description
+
 This is a weather-dashboard website. It allows users to view the current and next 5 days forecast from the city users enter. 
 
 ## Usage 
@@ -15,7 +16,7 @@ Once you enter a valid city, current date will display at the top right side and
 The dates, weather icons, temperature, humidity and windy speed will also display in both current forecast and the next 5 days. 
 
 
-![Alt text](assets/images/d1.PNG)
+![Alt text](assets/images/weather-app-demo.PNG)
 
 
 The recent-searched cities are automatically saved and will display under "history search section", you can save up to 10 cities at a time. 
@@ -30,6 +31,6 @@ You can also you the "clear history" button to clear the history.
 - jQuery 
 - Bootstrap
 
-##Deployment Link
+## Deployment Link
 
 https://tweetwee1810.github.io/weather-dashboard-app/
